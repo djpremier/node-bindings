@@ -6,7 +6,6 @@ var fs = require('fs'),
   path = require('path'),
   fileURLToPath = require('file-uri-to-path'),
   join = path.join,
-  dirname = path.dirname,
   exists =
     (fs.accessSync &&
       function(path) {
@@ -194,7 +193,7 @@ exports.getFileName = function getFileName(calling_file) {
  */
 
 exports.getRoot = function getRoot(file) {
-  var dir = dirname(file),
+  var dir = path.dirname(file),
     prev;
   while (true) {
     if (dir === '.') {
