@@ -155,7 +155,7 @@ exports.getFileName = function getFileName(calling_file) {
   Error.prepareStackTrace = function(e, st) {
     for (var i = 0, l = st.length; i < l; i++) {
       fileName = st[i].getFileName();
-      if (fileName !== __filename) {
+      if (fileName && fileName !== __filename) {
         if (calling_file) {
           if (fileName !== calling_file) {
             return;
@@ -177,7 +177,7 @@ exports.getFileName = function getFileName(calling_file) {
 
   // handle filename that starts with "file://"
   var fileSchema = 'file://';
-  if (fileName.indexOf(fileSchema) === 0) {
+  if (fileName && fileName.indexOf(fileSchema) === 0) {
     fileName = fileURLToPath(fileName);
   }
 
